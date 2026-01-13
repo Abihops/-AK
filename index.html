@@ -150,7 +150,44 @@
                 </div>
             </div>
 
-            <!-- Project 2: SolarCar -->
+            <!-- Project 2: CFD Navier-Stokes Solver -->
+            <div class="project-card project-featured">
+                <div class="project-image">
+                    <img src="images/Screenshot 2026-01-13 at 3.20.10 PM.png" alt="CFD Lid-Driven Cavity Flow Streamlines">
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag">CFD</span>
+                        <span class="tag">Numerical Methods</span>
+                        <span class="tag">MATLAB</span>
+                    </div>
+                    <h3>Incompressible Navier-Stokes Solver</h3>
+                    <p class="project-role">AOE 4434: Intro to CFD | Fall 2025</p>
+                    <p>
+                        Developed a 2D incompressible Navier-Stokes solver from scratch using artificial 
+                        compressibility with time derivative preconditioning. Solved the classic lid-driven 
+                        cavity flow benchmark problem at Re = 100 with second-order spatial accuracy.
+                    </p>
+                    <ul class="project-details">
+                        <li>Implemented point Jacobi iterative scheme with <strong>second-order accurate 
+                            central differencing</strong> for spatial discretization</li>
+                        <li>Verified implementation using <strong>Method of Manufactured Solutions (MMS)</strong>, 
+                            achieving discretization errors of 10<sup>-5</sup> to 10<sup>-6</sup></li>
+                        <li>Performed systematic mesh refinement study (33×33, 65×65, 129×129) with 
+                            <strong>Richardson extrapolation</strong> for error estimation</li>
+                        <li>Validated against <strong>Ghia et al. benchmark data</strong> with &lt;1% deviation 
+                            at centerline velocity profiles</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span>MATLAB</span>
+                        <span>Navier-Stokes</span>
+                        <span>Finite Difference</span>
+                        <span>Code Verification</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: SolarCar (keeping original numbering for clarity) -->
             <div class="project-card">
                 <div class="project-image">
                     <div class="project-placeholder">
@@ -220,11 +257,7 @@
                 </div>
             </div>
 
-            <!-- Add More Projects Prompt -->
-            <div class="add-project-prompt">
-                <p>💡 <strong>Add more projects here:</strong> Class projects, personal projects, 
-                    CAD designs, simulations — anything you can explain and are proud of.</p>
-            </div>
+            <!-- More projects can be added here -->
         </div>
     </section>
 
@@ -242,9 +275,9 @@
                         <span class="skill-item">MATLAB</span>
                         <span class="skill-item">Simulink</span>
                         <span class="skill-item">ANSYS CFD</span>
+                        <span class="skill-item">Navier-Stokes Solvers</span>
                         <span class="skill-item">XFOIL</span>
                         <span class="skill-item">AVL</span>
-                        <span class="skill-item">Excel</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -271,8 +304,8 @@
                     <h3>Engineering</h3>
                     <div class="skill-items">
                         <span class="skill-item">Systems Engineering</span>
-                        <span class="skill-item">Requirements Analysis</span>
-                        <span class="skill-item">Trade Studies</span>
+                        <span class="skill-item">Numerical Methods</span>
+                        <span class="skill-item">Code Verification</span>
                         <span class="skill-item">Technical Writing</span>
                         <span class="skill-item">Project Management</span>
                     </div>
