@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- VT LUNA Rover Control Launch File - Motion Capture Version -->
+  
+  <!-- Parameters -->
+  <arg name="serial_port" default="/dev/ttyACM0" />
+  <arg name="mocap_ip" default="0.0.0.0" />
+  <arg name="mocap_port" default="5555" />
+  <arg name="rover_id" default="rover_1" />
+  <arg name="navigation_enabled" default="false" />
+  
+  <!-- Motor Controller Node -->
+  <node name="motor_controller" pkg="rover_control" type="motor_controller.py" output="screen">
+    <param name="serial_port" value="$(arg serial_port)" />
+    <param name="baud_rate" value="115200" />
+    <param name="wheel_base" value="0.3" />
+    <param name="max_speed" value="255" />
+  </node>
+  
+  <!-- Motion Capture Receiver Node -->
+  <!-- Receives rover position from room cameras via WiFi -->
+  <node name="mocap_receiver" pkg="rover_control" type="mocap_receiver.py" output="screen">
+    <param name="mocap_ip" value="$(arg mocap_ip)" />
+    <param name="mocap_port" value="$(arg mocap_port)" />
+    <param name="rover_id" value="$(arg rover_id)" />
+    <param name="protocol" value="json" />  <!-- or 'binary' -->
+  </node>
+  
+  <!-- Navigation Controller Node -->
+  <!-- Uses mocap position to navigate to target locations -->
+  <node name="navigation_controller" pkg="rover_control" type="navigation_controller.py" output="screen">
+    <param name="max_linear_speed" value="0.3" />
+    <param name="max_angular_speed" value="1.0" />
+    <param name="position_tolerance" value="0.1" />
+    <param name="angle_tolerance" value="0.1" />
+  </node>
+  
+  <!-- Optional: RViz for visualization -->
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rover_control)/rviz/rover.rviz" /> -->
+  
+</launch>
