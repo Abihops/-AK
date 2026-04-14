@@ -710,3 +710,279 @@ a {
     }
 }
 
+/* ==========================================
+   Print Styles — Clean PDF Output
+   ========================================== */
+@media print {
+    /* Reset colors */
+    *, *::before, *::after {
+        color: #111 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    body {
+        background: #fff !important;
+        font-size: 11pt;
+        line-height: 1.5;
+    }
+
+    /* Hide non-essential elements */
+    .nav,
+    .hero-background,
+    .grid-overlay,
+    .gradient-orb,
+    .hero-cta,
+    .btn {
+        display: none !important;
+    }
+
+    /* Force everything visible (override JS reveal animations) */
+    .reveal,
+    .hero-tag,
+    .hero-title,
+    .hero-subtitle,
+    .hero-stats {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+
+    /* Hero — compact, no full-height */
+    .hero {
+        min-height: auto !important;
+        padding: 20pt 0 10pt 0 !important;
+    }
+
+    .hero-title {
+        font-size: 22pt !important;
+        -webkit-text-fill-color: #111 !important;
+        background: none !important;
+    }
+
+    .hero-tag {
+        font-size: 10pt !important;
+        font-weight: 600;
+        margin-bottom: 4pt !important;
+    }
+
+    .hero-subtitle {
+        font-size: 10pt !important;
+        max-width: 100% !important;
+        margin-bottom: 10pt !important;
+    }
+
+    .hero-stats {
+        gap: 30pt !important;
+    }
+
+    .stat-number {
+        font-size: 14pt !important;
+    }
+
+    .stat-label {
+        font-size: 8pt !important;
+    }
+
+    /* Container */
+    .container,
+    .hero-content {
+        max-width: 100% !important;
+        padding: 0 20pt !important;
+    }
+
+    /* Section spacing */
+    .about,
+    .projects,
+    .skills,
+    .contact {
+        padding: 20pt 0 !important;
+    }
+
+    .section-header {
+        margin-bottom: 15pt !important;
+    }
+
+    .section-tag {
+        font-size: 9pt !important;
+        margin-bottom: 4pt !important;
+    }
+
+    .section-header h2 {
+        font-size: 16pt !important;
+    }
+
+    /* About */
+    .about-content {
+        grid-template-columns: 1fr !important;
+        gap: 15pt !important;
+    }
+
+    .about-text p {
+        font-size: 10pt !important;
+        margin-bottom: 6pt !important;
+    }
+
+    .about-highlights {
+        gap: 8pt !important;
+    }
+
+    .highlight-card {
+        border: 1px solid #ccc !important;
+        border-radius: 6pt !important;
+        padding: 10pt !important;
+    }
+
+    .highlight-card h3 {
+        font-size: 10pt !important;
+    }
+
+    .highlight-card p {
+        font-size: 9pt !important;
+    }
+
+    /* Projects */
+    .project-card,
+    .project-featured {
+        grid-template-columns: 1fr !important;
+        border: 1px solid #ccc !important;
+        border-radius: 6pt !important;
+        margin-bottom: 15pt !important;
+        page-break-inside: avoid;
+    }
+
+    .project-card:hover {
+        transform: none !important;
+    }
+
+    .project-image {
+        display: none !important;
+    }
+
+    .project-info {
+        padding: 12pt !important;
+    }
+
+    .project-featured .project-info {
+        padding: 12pt !important;
+    }
+
+    .project-info h3 {
+        font-size: 12pt !important;
+    }
+
+    .project-role {
+        font-size: 9pt !important;
+        margin-bottom: 6pt !important;
+    }
+
+    .project-info > p {
+        font-size: 9pt !important;
+        margin-bottom: 8pt !important;
+    }
+
+    .project-details li {
+        font-size: 9pt !important;
+        margin-bottom: 4pt !important;
+    }
+
+    .project-details strong {
+        color: #111 !important;
+        font-weight: 700 !important;
+    }
+
+    .tag {
+        border: 1px solid #999 !important;
+        font-size: 7pt !important;
+        padding: 2pt 6pt !important;
+    }
+
+    .project-tech span {
+        border: 1px solid #bbb !important;
+        font-size: 7pt !important;
+        padding: 2pt 6pt !important;
+        border-radius: 3pt !important;
+    }
+
+    /* View Report buttons in print */
+    .project-info .btn-secondary {
+        display: none !important;
+    }
+
+    /* Skills */
+    .skills-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10pt !important;
+    }
+
+    .skill-category {
+        border: 1px solid #ccc !important;
+        padding: 10pt !important;
+        page-break-inside: avoid;
+    }
+
+    .skill-category h3 {
+        font-size: 10pt !important;
+        margin-bottom: 6pt !important;
+    }
+
+    .skill-item {
+        font-size: 8pt !important;
+        padding: 3pt 8pt !important;
+        border: 1px solid #ddd !important;
+    }
+
+    /* Contact */
+    .contact-content {
+        text-align: left !important;
+    }
+
+    .contact-text {
+        font-size: 10pt !important;
+        margin-bottom: 10pt !important;
+    }
+
+    .contact-links {
+        justify-content: flex-start !important;
+        gap: 8pt !important;
+    }
+
+    .contact-link {
+        border: 1px solid #ccc !important;
+        padding: 6pt 10pt !important;
+        font-size: 9pt !important;
+    }
+
+    .contact-location {
+        font-size: 9pt !important;
+        margin-top: 6pt !important;
+    }
+
+    /* Footer */
+    .footer {
+        border-top: 1px solid #ccc !important;
+        padding: 10pt 0 !important;
+    }
+
+    .footer p {
+        font-size: 8pt !important;
+    }
+
+    /* Links: show URL for email and tel */
+    a[href^="mailto:"]::after,
+    a[href^="tel:"]::after {
+        content: "" !important;
+    }
+
+    /* Page break hints */
+    h2, h3 {
+        page-break-after: avoid;
+    }
+
+    .section-header {
+        page-break-after: avoid;
+    }
+}
+
