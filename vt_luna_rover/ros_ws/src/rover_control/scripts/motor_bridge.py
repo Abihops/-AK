@@ -6,23 +6,19 @@
 #
 # Subscribes to:
 #   /cmd_vel              Twist   - drive commands from navigation
-#   /mechanism/speed      Float32 - mechanism motor (-1.0 to 1.0)
-#   /servo/angles         Float32MultiArray - 3 servo angles (0 to 180)
 #
 # Publishes:
 #   /arduino/connected    Bool    - True if Arduino is responding
 #
 # Serial commands sent to Arduino:
 #   DRIVE:left,right   speeds -255 to 255
-#   MECH:speed         speed  -255 to 255
-#   SERVO:s1,s2,s3     angles 0 to 180
 #   STOP
 #   PING  (Arduino replies PONG so we know its alive)
 
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
-from std_msgs.msg import Bool, Float32, Float32MultiArray
+from std_msgs.msg import Bool
 import serial
 import serial.tools.list_ports
 import threading
@@ -57,8 +53,6 @@ class MotorBridge(Node):
 
         # Subscribers
         self.create_subscription(Twist,             '/cmd_vel',         self.cmd_vel_cb,  10)
-        self.create_subscription(Float32,           '/mechanism/speed', self.mech_cb,     10)
-        self.create_subscription(Float32MultiArray, '/servo/angles',    self.servo_cb,    10)
 
         # Publishers
         self.status_pub = self.create_publisher(Bool, '/arduino/connected', 10)
@@ -134,27 +128,12 @@ class MotorBridge(Node):
 
         self.send(f'DRIVE:{left_pwm},{right_pwm}')
 
-    def mech_cb(self, msg):
-        # Mechanism motor expects a float from -1.0 to 1.0
-        speed = int(max(-1.0, min(1.0, msg.data)) * self.max_spd)
-        self.send(f'MECH:{speed}')
-
-    def servo_cb(self, msg):
-        # Expects an array of 3 angles in degrees (0 to 180)
-        if len(msg.data) < 3:
-            self.get_logger().warn('SERVO needs 3 values [s1, s2, s3]')
-            return
-        a1 = int(max(0, min(180, msg.data[0])))
-        a2 = int(max(0, min(180, msg.data[1])))
-        a3 = int(max(0, min(180, msg.data[2])))
-        self.send(f'SERVO:{a1},{a2},{a3}')
-
     def watchdog_timer(self):
         # Send STOP if no drive command has come in for a while
         if time.time() - self.last_cmd_time > self.cmd_timeout:
             self.send('STOP')
 
-    def ping_timer(self):
+    def ping_timer(self):a
         # Ping the Arduino every second to see if its still there
         self.send('PING')
 

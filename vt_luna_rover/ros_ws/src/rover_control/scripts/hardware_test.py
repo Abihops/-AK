@@ -14,7 +14,6 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
-from std_msgs.msg import Float32, Float32MultiArray
 import time
 
 
@@ -28,8 +27,6 @@ class HardwareTest(Node):
         super().__init__('hardware_test')
 
         self.cmd_vel_pub = self.create_publisher(Twist,             '/cmd_vel',         10)
-        self.mech_pub    = self.create_publisher(Float32,           '/mechanism/speed', 10)
-        self.servo_pub   = self.create_publisher(Float32MultiArray, '/servo/angles',    10)
 
         # Wait a moment for motor_bridge to be ready
         self.get_logger().info("Hardware test starting in 2 seconds...")
@@ -68,49 +65,8 @@ class HardwareTest(Node):
         self.stop()
         time.sleep(PAUSE)
 
-        # Test 5: Mechanism motor forward
-        self.log_test("TEST 5: Mechanism motor forward (M5)")
-        self.mech_pub.publish(Float32(data=0.4))
-        time.sleep(TEST_DURATION)
-        self.mech_pub.publish(Float32(data=0.0))
-        time.sleep(PAUSE)
-
-        # Test 6: Mechanism motor reverse
-        self.log_test("TEST 6: Mechanism motor reverse (M5)")
-        self.mech_pub.publish(Float32(data=-0.4))
-        time.sleep(TEST_DURATION)
-        self.mech_pub.publish(Float32(data=0.0))
-        time.sleep(PAUSE)
-
-        # Test 7: Servo 1 sweep
-        self.log_test("TEST 7: Servo 1 sweep (0 -> 180 -> 90)")
-        self.send_servos(0.0, 90.0, 90.0)
-        time.sleep(1.0)
-        self.send_servos(180.0, 90.0, 90.0)
-        time.sleep(1.0)
-        self.send_servos(90.0, 90.0, 90.0)
-        time.sleep(PAUSE)
-
-        # Test 8: Servo 2 sweep
-        self.log_test("TEST 8: Servo 2 sweep (0 -> 180 -> 90)")
-        self.send_servos(90.0, 0.0, 90.0)
-        time.sleep(1.0)
-        self.send_servos(90.0, 180.0, 90.0)
-        time.sleep(1.0)
-        self.send_servos(90.0, 90.0, 90.0)
-        time.sleep(PAUSE)
-
-        # Test 9: Servo 3 sweep
-        self.log_test("TEST 9: Servo 3 sweep (0 -> 180 -> 90)")
-        self.send_servos(90.0, 90.0, 0.0)
-        time.sleep(1.0)
-        self.send_servos(90.0, 90.0, 180.0)
-        time.sleep(1.0)
-        self.send_servos(90.0, 90.0, 90.0)
-        time.sleep(PAUSE)
-
         self.get_logger().info("=== Hardware test complete ===")
-        self.get_logger().info("Check that all motors spun and servos moved correctly")
+        self.get_logger().info("Check that all wheel motors spun correctly")
         self.get_logger().info("If a motor spun backwards, flip the DIR wire on that Cytron driver")
 
     def send_drive(self, linear, angular):
@@ -118,11 +74,6 @@ class HardwareTest(Node):
         twist.linear.x  = linear
         twist.angular.z = angular
         self.cmd_vel_pub.publish(twist)
-
-    def send_servos(self, s1, s2, s3):
-        msg = Float32MultiArray()
-        msg.data = [s1, s2, s3]
-        self.servo_pub.publish(msg)
 
     def stop(self):
         self.cmd_vel_pub.publish(Twist())

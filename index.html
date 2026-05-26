@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="#" class="nav-logo">AK</a>
@@ -27,6 +28,7 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-background">
             <div class="grid-overlay"></div>
@@ -62,6 +64,7 @@
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
@@ -104,6 +107,7 @@
         </div>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
@@ -111,6 +115,7 @@
                 <h2>Featured Work</h2>
             </div>
 
+            <!-- Project 1: NASA C3 -->
             <div class="project-card project-featured">
                 <div class="project-image">
                     <img src="images/logvtluna.png" alt="C3 COSMIC Lunar Payload"
@@ -141,20 +146,17 @@
                         <span>Requirements Management</span>
                         <span>Technical Leadership</span>
                     </div>
-                    <a href="VTLUNA_FINAL_MAY_PRESENTATION.pdf" target="_blank" class="btn btn-secondary"
-                        style="margin-top: 20px; display: inline-flex;">
-                        📄 View Final Spring Report
-                    </a>
-                      <a href="VTLUNA_C3_Lunar_Spring_Final_Report.pdf" target="_blank" class="btn btn-secondary"
+                    <a href="media/VTLUNA_C3_Lunar_Spring_Final_Report.pdf" target="_blank" class="btn btn-secondary"
                         style="margin-top: 20px; display: inline-flex;">
                         📄 View Final Spring Report
                     </a>
                 </div>
             </div>
 
+            <!-- Project 2: VT LUNA Rover -->
             <div class="project-card project-featured">
                 <div class="project-image">
-                    <img src="rover_pic.jpg" alt="VT LUNA Regolith Collection Rover"
+                    <img src="media/rover_pic.jpg" alt="VT LUNA Regolith Collection Rover"
                         style="object-fit: contain; padding: 20px; border-radius: 8px;">
                 </div>
                 <div class="project-info">
@@ -185,7 +187,7 @@
                         <span>Python</span>
                     </div>
                     <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
-                        <a href="VTLUNA_FINAL_MAY_PRESENTATION.pdf" target="_blank" class="btn btn-secondary"
+                        <a href="media/VTLUNA_FINAL_MAY_PRESENTATION.pdf" target="_blank" class="btn btn-secondary"
                             style="display: inline-flex;">
                             📄 View Final Presentation
                         </a>
@@ -193,6 +195,7 @@
                 </div>
             </div>
 
+            <!-- Project 3: C3 COSMIC Poster -->
             <div class="project-card">
                 <div class="project-image">
                     <div style="width: 100%; height: 100%; background: #1a1c29; display: flex; align-items: center; justify-content: center; color: #a0a5cc; border-radius: 8px; border: 2px dashed #3a3d52; min-height: 250px;">
@@ -213,50 +216,14 @@
                         <li><strong>Placed 2nd overall</strong> in the Aerospace Senior Design Poster Expo</li>
                         <li>Conduced information down within the poster to present the complex subsystems to industry professionals and faculty</li>
                     </ul>
-                    <a href="VTLUNA_Poster3.pdf" target="_blank" class="btn btn-secondary"
+                    <a href="media/VTLUNA_Poster3.pdf" target="_blank" class="btn btn-secondary"
                         style="margin-top: 20px; display: inline-flex;">
                         📄 View Poster PDF
                     </a>
                 </div>
             </div>
 
-            <div class="project-card">
-                <div class="project-image">
-                    <div style="width: 100%; height: 100%; background: #1a1c29; display: flex; align-items: center; justify-content: center; color: #a0a5cc; border-radius: 8px; border: 2px dashed #3a3d52; min-height: 250px;">
-                        <p style="text-align: center; margin: 0; padding: 20px;">[ S1223 Airfoil Model ]<br><span style="font-size: 0.8em; opacity: 0.7;">OpenSCAD Render Placeholder</span></p>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <div class="project-tags">
-                        <span class="tag">Aerodynamics</span>
-                        <span class="tag">OpenSCAD</span>
-                        <span class="tag">XFOIL</span>
-                        <span class="tag">CFD</span>
-                    </div>
-                    <h3>Formula 1 Front Wing — Boundary Layer Analysis</h3>
-                    <p class="project-role">AOE 3044: Passion Project | Spring 2026 [cite: 27, 2]</p>
-                    <p>
-                        Analyzed boundary layer development, transition, and separation on the Selig S1223 high-lift airfoil, a highly representative surrogate for an F1 front wing[cite: 30, 34].
-                    </p>
-                    <ul class="project-details">
-                        <li>Parametrically modeled the S1223 high-camber airfoil geometry using <strong>OpenSCAD</strong> to generate 3D aerodynamic surfaces</li>
-                        <li>Validated hand-calculated analytical solutions (Blasius and 1/7th Power Law) against <strong>XFOIL</strong> numerical simulations [cite: 44, 60]</li>
-                        <li>Predicted transition onset at x/c = 0.3255 and evaluated adverse pressure gradients [cite: 75, 149]</li>
-                        <li>Analyzed skin friction drag and boundary layer management strategies within the context of the <strong>2026 FIA Technical Regulations</strong> [cite: 36, 182, 224]</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span>OpenSCAD</span>
-                        <span>XFOIL</span>
-                        <span>Aerodynamics</span>
-                        <span>Boundary Layer Theory</span>
-                    </div>
-                    <a href="Passion_Project_Khadka_Abinav.pdf" target="_blank" class="btn btn-secondary"
-                        style="margin-top: 20px; display: inline-flex;">
-                        📄 View Full Report
-                    </a>
-                </div>
-            </div>
-
+            <!-- Project 4: CFD Navier-Stokes Solver -->
             <div class="project-card">
                 <div class="project-image">
                     <img src="images/Figure4.png" alt="CFD Navier-Stokes Solver Results"
@@ -296,6 +263,7 @@
                 </div>
             </div>
 
+            <!-- Project 5: SolarCar -->
             <div class="project-card">
                 <div class="project-image">
                     <div style="width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; background: #1a1c29; border-radius: 8px;">
@@ -329,6 +297,7 @@
                 </div>
             </div>
 
+            <!-- Project 6: S.55 Aircraft Analysis -->
             <div class="project-card">
                 <div class="project-image">
                     <img src="images/s55-aircraft.png" alt="Savoia-Marchetti S.55 Twin-Hull Aircraft"
@@ -367,9 +336,11 @@
                 </div>
             </div>
 
-            </div>
+            <!-- More projects can be added here -->
+        </div>
     </section>
 
+    <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header">
@@ -422,6 +393,7 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
@@ -453,6 +425,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>© 2026 Abinav Khadka. Built with purpose.</p>
